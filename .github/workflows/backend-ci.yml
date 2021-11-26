@@ -20,7 +20,7 @@ jobs:
     env:
       Solution_Name: CarPartsOnline.sln
       #Test_Project_Path: C#\dnn\MovieTest\MovieTest.csproj
-      Dnn_Project_Path: C#\dnn\dnnAPI\dnnAPI.csproj
+      CarPartsOnline_Project_Path: CarPartsOnline\CarPartsOnline\CarPartsOnline.csproj
 
     steps:
     - name: Checkout
