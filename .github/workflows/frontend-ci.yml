@@ -30,7 +30,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: CarPartsOnline/ui/ui-carpartsonline/package-lock.json
+        cache-dependency-path: CarPartsOnline/ui/ui-carpartsonline
   
     - run: npm ci
     - run: npm run build --if-present
