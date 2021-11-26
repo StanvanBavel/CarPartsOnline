@@ -31,7 +31,7 @@ jobs:
         cache: 'npm'
         #cache-dependency-path: CarPartsOnline/ui-carpartsonline/package-lock.json
         cache-dependency-path: '**/package-lock.json'
-        path: "CarPartsOnline/ui-carpartsonline"
+        run: cd CarPartsOnline/ui-carpartsonline
   
     - run: npm ci
     - run: npm run build --if-present
