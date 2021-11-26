@@ -23,8 +23,7 @@ jobs:
       
     steps:
     - uses: actions/checkout@v2
-    - run: echo "CarPartsOnline/CarPartsOnline/ui/ui-carpartsonline" >> $GITHUB_PATH
-    - run: npm install
+    #- run: npm install
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
