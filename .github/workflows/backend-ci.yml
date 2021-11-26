@@ -19,7 +19,7 @@ jobs:
 
     env:
       Solution_Name: CarPartsOnline.sln
-      #Test_Project_Path: C#\dnn\MovieTest\MovieTest.csproj
+      CarPartsOnlineTest_Path: CarPartsOnline/CarPartsTest/CarPartsTest.csproj
       CarPartsOnline_Project_Path: CarPartsOnline\CarPartsOnline\CarPartsOnline.csproj
 
     steps:
@@ -42,6 +42,6 @@ jobs:
     - name: Build with dotnet
       run: dotnet build $env:Solution_Name
 
-    # Execute all unit tests in the solution
-    #- name: Execute unit tests
-      #run: dotnet test $env:Test_Project_Path
+    #Execute all unit tests in the solution
+    - name: Execute unit tests
+      #run: dotnet test $env:CarPartsOnlineTest_Path
