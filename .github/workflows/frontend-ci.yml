@@ -25,7 +25,7 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
-        path: ./.github/CarPartsOnline/ui/ui-carpartsonline
+        path: /home/runner/work/CarPartsOnline/CarPartsOnline/ui/ui-carpartsonline
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
   
