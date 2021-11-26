@@ -28,9 +28,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        #cache-dependency-path: CarPartsOnline/ui-carpartsonline/package-lock.json
-        cache-dependency-path: '**/package-lock.json'
+        cache-dependency-path: CarPartsOnline/ui-carpartsonline
+        #cache-dependency-path: '**/package-lock.json'
         
   
-    #- run: npm ci
-    - run: CI= npm run build --if-present
+    - run: npm ci
+    - run: npm run build --if-present
