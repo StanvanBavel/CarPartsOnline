@@ -30,6 +30,7 @@ jobs:
         cache: 'npm'
         #cache-dependency-path: CarPartsOnline/ui-carpartsonline/
         cache-dependency-path: '**/'
+        path: "CarPartsOnline/ui-carpartsonline"
         
   
     - run: npm ci
