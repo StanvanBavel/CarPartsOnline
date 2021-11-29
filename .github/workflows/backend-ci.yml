@@ -20,7 +20,7 @@ jobs:
     env:
       Solution_Name: CarPartsOnline.sln
       CarPartsOnlineTest_Path: CarPartsOnline/CarPartsTest/CarPartsTest.csproj
-      CarPartsOnline_Project_Path: CarPartsOnline\CarPartsOnline\CarPartsOnline.csproj
+      CarPartsOnline_Project_Path: CarPartsOnline/CarPartsOnline/CarPartsOnline.csproj
 
     steps:
     - name: Checkout
