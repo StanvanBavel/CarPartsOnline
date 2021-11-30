@@ -71,7 +71,7 @@ jobs:
 
     - run: cd ui-carpartsonline
     - run: npm install
-      working-directory: ../ui-carpartsonline
+      working-directory: ./ui-carpartsonline
     - run: npm ci
       working-directory: ./ui-carpartsonline
     - run: npm run build --if-present
