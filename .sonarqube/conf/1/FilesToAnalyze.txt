@@ -1,0 +1,16 @@
+﻿D:\Github\CarPartsOnline\CarPartsOnline\Controllers\ProductController.cs
+D:\Github\CarPartsOnline\CarPartsOnline\Controllers\WeatherForecastController.cs
+D:\Github\CarPartsOnline\CarPartsOnline\Data\DataContext.cs
+D:\Github\CarPartsOnline\CarPartsOnline\Migrations\20211012111432_InitialMigration.cs
+D:\Github\CarPartsOnline\CarPartsOnline\Migrations\20211012111432_InitialMigration.Designer.cs
+D:\Github\CarPartsOnline\CarPartsOnline\Migrations\DataContextModelSnapshot.cs
+D:\Github\CarPartsOnline\CarPartsOnline\Models\Product.cs
+D:\Github\CarPartsOnline\CarPartsOnline\Program.cs
+D:\Github\CarPartsOnline\CarPartsOnline\Startup.cs
+D:\Github\CarPartsOnline\CarPartsOnline\WeatherForecast.cs
+D:\Github\CarPartsOnline\CarPartsOnline\obj\Debug\net5.0\.NETCoreApp,Version=v5.0.AssemblyAttributes.cs
+D:\Github\CarPartsOnline\CarPartsOnline\obj\Debug\net5.0\CarPartsOnline.AssemblyInfo.cs
+D:\Github\CarPartsOnline\CarPartsOnline\obj\Debug\net5.0\CarPartsOnline.MvcApplicationPartsAssemblyInfo.cs
+D:\Github\CarPartsOnline\CarPartsOnline\appsettings.Development.json
+D:\Github\CarPartsOnline\CarPartsOnline\appsettings.json
+D:\Github\CarPartsOnline\CarPartsOnline\Properties\launchSettings.json
