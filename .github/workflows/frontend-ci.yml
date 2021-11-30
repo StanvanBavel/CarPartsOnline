@@ -22,9 +22,15 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+    - name : Cache
+      uses: actions/cache@v2
+      with:
+        path: "frontend/node_modules"
+        key: node-modules-${{ hashFiles('ui-carpartrsonline/package.json') }}
     - run: npm ci
+      working-directory: ./ui-carpartrsonline
     - run: npm run build --if-present
+      working-directory: ./ui-carpartrsonline
 
 # This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
