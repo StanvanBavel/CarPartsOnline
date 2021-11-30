@@ -64,6 +64,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        cache-dependency-path: 'ui-carpartsonline//package.json'
     - run: cd ui-carpartsonline
     - run: npm install
     - run: npm ci
