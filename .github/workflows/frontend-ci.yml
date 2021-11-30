@@ -45,15 +45,16 @@ on:
 
 jobs:
   build:
-
+    
     runs-on: ubuntu-latest
-
+    
     strategy:
       matrix:
         node-version: [14.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+    - run: cd ui-carpartsonline
     - uses: actions/checkout@v2
       with: 
         path: ui-carpartsonline
@@ -62,6 +63,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: cd ui-carpartsonline
+    
     - run: npm ci
     - run: npm run build --if-present
