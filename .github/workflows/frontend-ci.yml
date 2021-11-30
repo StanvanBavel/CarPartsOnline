@@ -56,7 +56,7 @@ jobs:
     steps:
     
     - uses: actions/checkout@v2
-    - working-directory: ui-carpartsonline 
+    
         
     
     - name: Use Node.js ${{ matrix.node-version }}
