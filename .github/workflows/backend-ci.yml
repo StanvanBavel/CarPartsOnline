@@ -88,7 +88,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     # Build the application
-    - name: Build with dotnet
+    - name: Build with dotnet --version 5.0
       run: dotnet build $env:Solution_Name
 
     # Execute all unit tests in the solution
