@@ -67,5 +67,7 @@ jobs:
         cache-dependency-path: '**/package-lock.json'
     - run: cd ui-carpartsonline
     - run: npm install
+    - run: cd ui-carpartsonline
     - run: npm ci
+    - run: cd ui-carpartsonline
     - run: npm run build --if-present
