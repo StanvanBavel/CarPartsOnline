@@ -43,7 +43,7 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USEERNAME }}
         password: ${{ sercrets.DOCKER_PASSWORD }}
-        repository: ui-carpartsonline/Dockerfile
+        working-directory: ./ui-carpartsonline/Dockerfile
         tags: latest
 
 # This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
