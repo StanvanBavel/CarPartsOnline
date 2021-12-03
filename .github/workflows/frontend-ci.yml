@@ -58,6 +58,9 @@ jobs:
   build-and-deploy-front-end:
     name: Build and Deploy Front-end
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'ui-carpartsonline'
     steps:
     - name: Checkout code
       uses: actions/checkout@v1
@@ -69,6 +72,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: stanvb/carpartsonline
         dockerfile: CarPartsOnline/ui-carpartsonline/Dockerfile
+        working-directory: ./ui-carpartsonline
         tags: latest
 
 # This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
