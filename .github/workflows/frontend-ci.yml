@@ -68,7 +68,7 @@ jobs:
         username: ${{ secrets.DOCKER_USEERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: stanvb/carpartsonline
-        dockerfile: ui-carpartsonline/Dockerfile
+        dockerfile: CarPartsOnline/ui-carpartsonline/Dockerfile
         tags: latest
 
 # This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
