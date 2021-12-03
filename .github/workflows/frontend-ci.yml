@@ -41,8 +41,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v1
       with:
-        username: ${{ DOCKER_USEERNAME }}
-        password: ${{ DOCKER_PASSWORD }}
+#         username: ${{ secrets.DOCKER_USEERNAME }}
+#         password: ${{ secrets.DOCKER_PASSWORD }}
         working-directory: ./ui-carpartsonline/Dockerfile
         tags: latest
 
