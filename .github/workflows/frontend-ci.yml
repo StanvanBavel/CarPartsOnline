@@ -71,7 +71,7 @@ jobs:
         username: ${{ secrets.DOCKER_USEERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: stanvb/carpartsonline
-        dockerfile: CarPartsOnline/ui-carpartsonline/Dockerfile
+        dockerfile: ./ui-carpartsonline/Dockerfile
         working-directory: ./ui-carpartsonline
         tags: latest
 
