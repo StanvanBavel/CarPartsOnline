@@ -63,16 +63,15 @@ jobs:
         working-directory: 'ui-carpartsonline'
     steps:
     - name: Checkout code
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
       
     - name: Build and push Docker Image
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v1
       with:
         username: ${{ secrets.DOCKER_USEERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: stanvb/carpartsonline
         dockerfile: ui-carpartsonline/Dockerfile
-        working-directory: ./ui-carpartsonline
         tags: latest
 
 # This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
