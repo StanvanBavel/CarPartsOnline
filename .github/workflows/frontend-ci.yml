@@ -57,11 +57,13 @@ jobs:
 #         run: |
 #           docker push ui-carpartsonline.nodejs
       - name: Build and push
+        working-directory: ./ui-carpartsonline
         uses: docker/build-push-action@v2
         with:
            context: .
            push: true
            tags: user/app:latest
+        
         
 
  
