@@ -55,7 +55,7 @@ jobs:
           docker build ./ui-carpartsonline -t ui-carpartsonline/nodejs:1.0.0
       - name: Docker Push
         run: |
-          docker push ui-carpartsonline.nodejs:1.0.0
+          docker push ui-carpartsonline.nodejs
 
  
  
