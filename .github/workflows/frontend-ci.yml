@@ -44,6 +44,12 @@ jobs:
     steps: 
       - name: Checkout
         uses: actions/checkout@v2
+      - name: docker login
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME}}
+          DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_TOKEN
       - name: Docker Build
         run: |
           docker build ./ui-carpartsonline -t ui-carpartsonline/nodejs:1.0.0
