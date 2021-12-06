@@ -46,7 +46,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Docker Build
         run: |
-          docker build ./ui-carpartsonline
+          docker build ./ui-carpartsonline/Dockerfile
         working-directory: ./ui-carpartsonline
  
  
