@@ -53,6 +53,9 @@ jobs:
   build-and-deploy-front-end:
     name: Build and Deploy Front-end
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'ui-carpartsonline'
     steps:
         -
           name: Checkout
@@ -76,6 +79,7 @@ jobs:
             context: .
             push: true
             tags: user/app:latest
+            working-directory: ./ui-carpartsonline
           
 
 
