@@ -1,7 +1,7 @@
 FROM node:lts-alpine as build-stage
 WORKDIR /app
-COPY ui-carpartsonline/package.json ./
-RUN ls -l
+# COPY ui-carpartsonline/package.json ./
+# RUN ls -l
 RUN npm install
 COPY ui-carpartsonline ./
 RUN ls -l
