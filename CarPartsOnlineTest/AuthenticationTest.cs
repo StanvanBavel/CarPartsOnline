@@ -34,9 +34,9 @@ namespace CarPartsOnlineTest
         {
             var Users = new List<User>
             {
-                new User { userId = 1, firstName = "Samson", email = "Samson@test.nl", password = "Samson" },
-                new User { userId = 2, firstName = "Pieter", email = "Pieter@test.nl", password = "Pietje"},
-                new User { userId = 3, firstName = "Gertje", email = "Gertje@test.nl", password = "Gertje"},
+                new User { userId = 1, firstName = "Samson", lastName ="vanGert",adress= "TestStraat", housenumber = "65", city = "TestStad", email = "Samson@test.nl", password = "Samson" , role = 0},
+                new User { userId = 2, firstName = "Pieter", lastName ="vanGert",adress= "TestStraat", housenumber = "65", city = "TestStad", email = "Pieter@test.nl", password = "Pietje" , role = 0},
+                new User { userId = 3, firstName = "Gertje",lastName ="vanGert",adress= "TestStraat", housenumber = "65", city = "TestStad",  email = "Gertje@test.nl", password = "Gertje" , role = 0},
                 new User { userId = 4, firstName = null, password = null, },
             };
             if (!context.Users.Any())
@@ -53,7 +53,7 @@ namespace CarPartsOnlineTest
             var controller = Initialize();
             var controller2 = InitializeToken();
             var usermodel = new User();
-            string test = controller2.nonExistentToken("Samson@test.nl", 1);
+            string test = controller2.nonExistentToken("Samson@test.nl", 0);
             var result = controller.login(test, usermodel);
             Assert.IsType<string>(result);
 
@@ -65,7 +65,7 @@ namespace CarPartsOnlineTest
             var controller = Initialize();
             var usermodel = new User();
 
-            var result = controller.loginNoToken("Samson@test.nl", 1);
+            var result = controller.loginNoToken("Samson@test.nl", 0);
             Assert.IsType<string>(result);
         }
 
@@ -76,7 +76,7 @@ namespace CarPartsOnlineTest
             var usermodel = new User();
 
             var result = controller.register(usermodel);
-            Assert.IsType<string>(result);
+            Assert.IsType<Authentication.Models.User>(result);
         }
 
         [Fact]
@@ -84,7 +84,7 @@ namespace CarPartsOnlineTest
         {
             var controller = Initialize();
             var usermodel = new User();
-            var test = controller.loginNoToken("Samson@test.nl", 1);
+            var test = controller.loginNoToken("Samson@test.nl", 0);
             var result = controller.getUser(test);
             Assert.IsType<User>(result);
         }
@@ -95,7 +95,7 @@ namespace CarPartsOnlineTest
         {
             var controller = InitializeToken();
 
-            var result = controller.CreateToken("Samson");
+            var result = controller.CreateToken("Samson", 0);
             Assert.IsType<ObjectResult>(result);
         }
 
@@ -105,7 +105,7 @@ namespace CarPartsOnlineTest
             var controller = InitializeToken();
             string test = controller.nonExistentToken("Samson@test.nl", 0);
             var result = controller.readOut(test);
-            //Assert.IsType<>(result);
+            //Assert.IsType<ObjectResult>(result);
         }
 
         [Fact]
