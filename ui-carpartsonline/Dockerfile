@@ -31,7 +31,7 @@ RUN npm install
 COPY . ./
 RUN ls -l
 RUN npm run build
-COPY nodeServer.js dist/nodeServer.js
+COPY nodeServer.js /nodeServer.js
 WORKDIR /app/dist
 EXPOSE 8080
 CMD ["node", "nodeServer.js"]
