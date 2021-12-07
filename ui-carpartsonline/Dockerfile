@@ -29,7 +29,7 @@
 
 
 FROM node:lts-alpine as build-stage
-WORKDIR /app
+WORKDIR /app/ui-carpartsonline
 COPY package*.json ./
 RUN ls -l
 RUN npm install
