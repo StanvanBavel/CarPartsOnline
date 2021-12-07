@@ -40,7 +40,7 @@ jobs:
         with:
           file: ./CarPartsOnline/Dockerfile
           push: true
-          tags: docker push stanvb/carpartsonline:latest
+          tags: stanvb/carpartsonline:latest
 
 
 
