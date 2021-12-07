@@ -40,6 +40,9 @@ jobs:
 
   docker:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'ui-carpartsonline'
     steps:
       -
         name: Set up QEMU
@@ -59,8 +62,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: stanvanbavel/carpartsonline/ui-carpartsonline:latest
-          working-directory: ./ui-carpartsonline
+          tags: stanvanbavel/carpartsonline:latest
+
 #   Build-Docker:
 #     runs-on: ubuntu-latest
 
