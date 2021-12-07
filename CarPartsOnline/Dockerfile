@@ -1,17 +1,7 @@
-# syntax=docker/dockerfile:1
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
-WORKDIR /app
+FROM ubuntu
 
-# Copy csproj and restore as distinct layers
-COPY *.csproj ./
-RUN dotnet restore
+MAINTAINER stanvanbavel pal <461345@student.fontys.nl>
 
-# Copy everything else and build
-COPY ../CarPartsOnline ./
-RUN dotnet publish -c Release -o out
+RUN apt-get update
 
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:5.0
-WORKDIR /app
-COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+CMD ["echo", "Hello World...! from my first docker image!"]
