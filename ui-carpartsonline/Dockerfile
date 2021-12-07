@@ -5,7 +5,7 @@
 
 # Choose the Image which has Node installed already
 FROM node:lts-alpine
-WORKDIR /app/ui-carpartsonline
+WORKDIR /app
 # install simple http server for serving static content
 RUN npm install -g http-server
 
