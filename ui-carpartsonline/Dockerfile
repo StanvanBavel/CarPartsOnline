@@ -1,11 +1,20 @@
-FROM node:lts-alpine
+FROM node:lts-alpine as build-stage
 WORKDIR /app
+
+ARG APP_URL="http://localhost:8080"
+ENV VUE_APP_URL ${APP_URL}}
+
 COPY package*.json ./
 RUN npm install
 COPY . .
-EXPOSE 8080
-CMD [ "npm", "start" ]
+RUN npm run build
 
+# production stage
+FROM nginx:stable-alpine as production-stage
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]
 
 
 
