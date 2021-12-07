@@ -59,7 +59,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: stanvanbavel/carpartsonline:latest
+          tags: stanvanbavel/carpartsonline/ui-carpartsonline:latest
 #   Build-Docker:
 #     runs-on: ubuntu-latest
 
