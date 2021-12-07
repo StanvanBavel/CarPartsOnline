@@ -1,17 +1,4 @@
-FROM node:lts-alpine as build-stage
-WORKDIR /app
 
-ARG APP_URL="http://localhost:8080"
-ENV VUE_APP_URL ${APP_URL}}
-
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-
-
-EXPOSE 8080
-CMD CMD [ "http-server", "dist" ]
 
 
 
@@ -41,15 +28,15 @@ CMD CMD [ "http-server", "dist" ]
 # CMD [ "http-server", "dist" ]
 
 
-# FROM node:lts-alpine as build-stage
-# WORKDIR /app
-# COPY package*.json ./
-# RUN ls -l
-# RUN npm install
-# COPY . ./
-# RUN ls -l
-# RUN npm run build
-# COPY nodeServer.js /nodeServer.js
-# WORKDIR /app/dist
-# EXPOSE 8080
-# CMD ["node", "nodeServer.js"]
+FROM node:lts-alpine as build-stage
+WORKDIR /app
+COPY package*.json ./
+RUN ls -l
+RUN npm install
+COPY . ./
+RUN ls -l
+RUN npm run build
+COPY nodeServer.js /nodeServer.js
+WORKDIR /app/dist
+EXPOSE 8080
+CMD ["node", "nodeServer.js"]
