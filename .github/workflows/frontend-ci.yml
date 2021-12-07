@@ -60,6 +60,7 @@ jobs:
         with:
           push: true
           tags: stanvanbavel/carpartsonline/ui-carpartsonline:latest
+          working-directory: ./ui-carpartsonline
 #   Build-Docker:
 #     runs-on: ubuntu-latest
 
