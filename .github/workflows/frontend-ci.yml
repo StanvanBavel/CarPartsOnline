@@ -63,7 +63,7 @@ jobs:
         with:
           file: ./ui-carpartsonline/Dockerfile
           push: true
-          tags: stanvanbavel/carpartsonline:latest
+          tags: stanvb/carpartsonline:latest
 
 #   Build-Docker:
 #     runs-on: ubuntu-latest
