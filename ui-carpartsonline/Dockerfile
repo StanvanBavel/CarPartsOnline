@@ -10,7 +10,7 @@ WORKDIR /ui-carpartsonline
 
 # copy both 'package.json' and 'package-lock.json' (if available)
 COPY package*.json ./
-
+WORKDIR /ui-carpartsonline
 # install project dependencies
 RUN npm install
 
