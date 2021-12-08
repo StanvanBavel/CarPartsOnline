@@ -1,4 +1,4 @@
-name: .NET 5 CI
+name: Authentication CI
 on: [push]
 
 jobs:
