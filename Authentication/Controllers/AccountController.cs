@@ -1,6 +1,7 @@
 ﻿using Authentication.Data;
 using Authentication.Models;
 using Authentication.Models.Dtos;
+using Authentication.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -14,10 +15,15 @@ namespace Authentication.Controllers
     public class AccountController : Controller
     {
         private readonly DataContext db;
+        private readonly IAccount _service;
         TokenController TC = new TokenController();
         public AccountController(DataContext db)
         {
             this.db = db;
+        }
+        public AccountController(IAccount _service)
+        {
+            this._service = _service;
         }
 
         [Route("/[controller]/login")]

@@ -53,7 +53,7 @@ export default {
     confirmOrder(){
       this.$router.push(
           {
-            name: "Order Overview",
+            name: "Order",
             params: {
               shoppingCartJson: JSON.stringify(this.shoppingCart)
             }

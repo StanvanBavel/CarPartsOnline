@@ -60,6 +60,27 @@ const routes =[
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/ShoppingCartView.vue')},
     props: true
+  },
+  {
+    path: '/order',
+    name: 'Order',
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/Order.vue')},
+    props: true
+  },
+  {
+    path: '/ordersucceed',
+    name: 'Order Succeed',
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/OrderSucceed.vue')},
+    props: true
+  },
+  {
+    path: '/userorders',
+    name: 'Personal Orders',
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/UserOrder.vue')},
+    props: true
   }
 ]
 

@@ -116,6 +116,7 @@ export default {
       axios.post('https://localhost:44334/Order/order', this.shoppingCart, { headers })
           .then((response) => {
             console.log(response);
+            this.$router.push('/ordersucceed');
           });
     }
   }

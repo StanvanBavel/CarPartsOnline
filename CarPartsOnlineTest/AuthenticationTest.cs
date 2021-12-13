@@ -46,18 +46,18 @@ namespace CarPartsOnlineTest
             context.SaveChanges();
         }
 
-        [Fact]
-        private void LoginUser_shouldloginuser()
-        {
+        //[Fact]
+        //private void LoginUser_shouldloginuser()
+        //{
 
-            var controller = Initialize();
-            var controller2 = InitializeToken();
-            var usermodel = new User();
-            string test = controller2.nonExistentToken("Samson@test.nl", 0);
-            var result = controller.login(test, usermodel);
-            Assert.IsType<string>(result);
+        //    var controller = Initialize();
+        //    var controller2 = InitializeToken();
+        //    var usermodel = new User();
+        //    string test = controller2.nonExistentToken("Samson@test.nl", 0);
+        //    var result = controller.login(test, usermodel);
+        //    Assert.IsType<string>(result);
 
-        }
+        //}
 
         [Fact]
         private void LoginNoToken_shouldnotloginuser()
@@ -79,15 +79,15 @@ namespace CarPartsOnlineTest
             Assert.IsType<Authentication.Models.User>(result);
         }
 
-        [Fact]
-        private void GetUser_shouldgetuser()
-        {
-            var controller = Initialize();
-            var usermodel = new User();
-            var test = controller.loginNoToken("Samson@test.nl", 0);
-            var result = controller.getUser(test);
-            Assert.IsType<User>(result);
-        }
+        //[Fact]
+        //private void GetUser_shouldgetuser()
+        //{
+        //    var controller = Initialize();
+        //    var usermodel = new User();
+        //    var test = controller.loginNoToken("Samson@test.nl", 0);
+        //    var result = controller.getUser(test);
+        //    Assert.IsType<User>(result);
+        //}
 
 
         [Fact]
@@ -99,23 +99,23 @@ namespace CarPartsOnlineTest
             Assert.IsType<ObjectResult>(result);
         }
 
-        [Fact]
-        private void ReadOut_shouldreadouttoken()
-        {
-            var controller = InitializeToken();
-            string test = controller.nonExistentToken("Samson@test.nl", 0);
-            var result = controller.readOut(test);
-            //Assert.IsType<ObjectResult>(result);
-        }
+        //[Fact]
+        //private void ReadOut_shouldreadouttoken()
+        //{
+        //    var controller = InitializeToken();
+        //    string test = controller.nonExistentToken("Samson@test.nl", 0);
+        //    var result = controller.readOut(test);
+        //    //Assert.IsType<ObjectResult>(result);
+        //}
 
-        [Fact]
-        private void isExpired_shouldcreatenewtoken()
-        {
-            var controller = InitializeToken();
-            string test = controller.nonExistentToken("Samson@test.nl", 0);
-            var result = controller.isExpired(test);
-            Assert.IsType<string>(result);
-        }
+        //[Fact]
+        //private void isExpired_shouldcreatenewtoken()
+        //{
+        //    var controller = InitializeToken();
+        //    string test = controller.nonExistentToken("Samson@test.nl", 0);
+        //    var result = controller.isExpired(test);
+        //    Assert.IsType<string>(result);
+        //}
 
         [Fact]
         private void NonexistentToken_shouldgeneratenewtoken()
@@ -125,5 +125,6 @@ namespace CarPartsOnlineTest
             var result = controller.nonExistentToken("Samson@test.nl", 0);
             Assert.IsType<string>(result);
         }
+
     }
 }
