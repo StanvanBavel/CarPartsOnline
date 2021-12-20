@@ -40,6 +40,6 @@ COPY . ./
 RUN ls -l
 RUN npm run build
 COPY nodeServer.js /nodeServer.js
-WORKDIR /app/dist
+WORKDIR /app/ui-carpartsonline
 EXPOSE 8080
 CMD ["node", "nodeServer.js"]
