@@ -1,5 +1,5 @@
 <template>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 400px">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -29,6 +29,9 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+<div>
+    <ChatBot></ChatBot>
+</div>
   <!-- <div class="home">
   
   
@@ -44,11 +47,13 @@
 
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import ChatBot from '@/components/ChatBot.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    HelloWorld,
+    ChatBot
   }
 }
 </script>

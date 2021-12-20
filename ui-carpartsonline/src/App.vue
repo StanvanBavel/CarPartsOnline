@@ -66,6 +66,7 @@
             </nav>
   </div>
   <br>
+  <!-- <ChatBot></ChatBot> -->
   <router-view v-on:setProductInCart="setShoppingCart" v-on:login="login"
   :logedIn="logedIn"
   />
@@ -75,6 +76,7 @@
 
 import ShoppingCart from "../src/components/ShoppingCart.vue";
 import LoginMenu from '../src/components/LoginMenu.vue';
+import ChatBot from '@/components/ChatBot.vue'
 
 export default {
 data(){
@@ -87,7 +89,7 @@ data(){
       email: ''
     }
   },
-components: {ShoppingCart, LoginMenu},
+components: {ShoppingCart, LoginMenu, ChatBot},
 methods:{
   
    login(data){
