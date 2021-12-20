@@ -8,18 +8,18 @@ CMD ["echo", "Hello World...! from my first docker image!"]
 
 
 
-# build stage
-FROM node:lts-alpine as build-stage
-WORKDIR /app/ui-carpartsonline
+# # build stage
+# FROM node:lts-alpine as build-stage
+# WORKDIR /app/ui-carpartsonline
 
 
-ARG APP_URL="http://localhost:8080"
-ENV VUE_APP_URL ${APP_URL}}
+# ARG APP_URL="http://localhost:8080"
+# ENV VUE_APP_URL ${APP_URL}}
 
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
+# COPY package*.json ./
+# RUN npm install
+# COPY . .
+# RUN npm run build
 
 # production stage
 # FROM nginx:stable-alpine as production-stage
