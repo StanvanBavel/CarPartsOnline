@@ -67,9 +67,6 @@ jobs:
           
   sonarcloud:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: 'ui-carpartsonline'
     steps:
     - uses: actions/checkout@v2
       with:
