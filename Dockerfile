@@ -5,13 +5,13 @@
 # RUN apt-get update
 
 # CMD ["echo", "DockerImage Pushed"]
-
-FROM mcr.microsoft.com/dotnet/aspnet:3.0 AS base
+# mcr.microsoft.com/dotnet/core/sdk:3.0-alpine AS build
+FROM mcr.microsoft.com/dotnet/aspnet:3.0-alpine AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:3.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:3.0-alpine AS build
 WORKDIR /src
 COPY ["CarPartsOnline/CarPartsOnline.csproj", "CarPartsOnline/"]
 RUN dotnet restore "CarPartsOnline/CarPartsOnline.csproj"
