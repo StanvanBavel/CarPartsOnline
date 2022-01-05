@@ -22,7 +22,7 @@ export default {
   },
   methods:{
     register(){
-      axios.post('https://localhost:44334/Account/register',{
+      axios.post('https://localhost:44344/Account/register',{
         "name": this.name,
         "email": this.email,
         "password": this.password

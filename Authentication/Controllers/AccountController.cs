@@ -4,6 +4,7 @@ using Authentication.Models.Dtos;
 using Authentication.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,16 +16,16 @@ namespace Authentication.Controllers
     public class AccountController : Controller
     {
         private readonly DataContext db;
-        private readonly IAccount _service;
+        //private readonly IAccount _service;
         TokenController TC = new TokenController();
         public AccountController(DataContext db)
         {
             this.db = db;
         }
-        public AccountController(IAccount _service)
-        {
-            this._service = _service;
-        }
+        //public AccountController(IAccount _service)
+        //{
+        //    this._service = _service;
+        //}
 
         [Route("/[controller]/login")]
         [HttpPost]
@@ -121,6 +122,26 @@ namespace Authentication.Controllers
             var x = TC.readOut(Authorization);
             User user = db.Users.Where(x => x.email.Equals(x.email)).FirstOrDefault();
             return user;
+        }
+
+        [Authorize]
+        [HttpPut]
+        [Route("/[controller]/Update")]
+        public string EditUser(User mode)
+        {
+            User user = db.Users.Where(x => x.userId == mode.userId).Single<User>();
+            user.userId = mode.userId;
+            user.firstName = mode.firstName;
+            user.lastName = mode.lastName;
+            user.adress = mode.adress;
+            user.housenumber = mode.housenumber;
+            user.city = mode.city;
+            user.email = mode.email;
+            user.password = mode.password;
+            
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return "User has been Updated";
         }
     }
 }

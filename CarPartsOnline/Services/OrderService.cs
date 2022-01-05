@@ -18,27 +18,54 @@ namespace CarPartsOnline.Services
 
         public Order CreateOrder(string userId)
         {
-            Order order = new Order();
-            order.userId = Convert.ToInt32(userId);
-            order.orderDate = DateTime.Now;
-            db.Orders.Add(order);
+            Order o = new Order();
+            o.userId = Convert.ToInt32(userId);
+            o.orderDate = DateTime.Now;
+            db.Orders.Add(o);
             db.SaveChanges();
-            return order;
+            return o;
         }
 
-        public bool CreateOrderItems(Order order, List<ShoppingCart> cart)
+        public bool CreateOrderItems(Order o, List<ShoppingCart> cart)
         {
-            foreach (ShoppingCart shoppingcart in cart)
+            foreach (ShoppingCart sc in cart)
             {
-                OrderProduct orderproduct = new OrderProduct();
-                orderproduct.amount = shoppingcart.amount;
-                orderproduct.productId = shoppingcart.product.productID;
-                orderproduct.OrderId = order.orderId;
+                OrderProduct op = new OrderProduct();
+                op.amount = sc.amount;
+                op.productId = sc.product.productID;
+                op.OrderId = o.orderId;
 
-                db.OrderProducts.Add(orderproduct);
+                db.OrderProducts.Add(op);
             }
             db.SaveChanges();
             return true;
+        }
+
+        public bool deleteOrders(int orderId)
+        {
+            try
+            {
+                Order o = (from Order in db.Orders
+                           where Order.orderId == orderId
+                           select Order).FirstOrDefault();
+                db.Orders.Remove(o);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public List<Order> getOrders(string userId)
+        {
+            List<Order> orders = (from Order in db.Orders
+                                  where Order.userId == Convert.ToInt32(userId)
+                                  select Order).ToList();
+
+            return orders;
+
         }
     }
 }
