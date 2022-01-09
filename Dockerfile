@@ -11,19 +11,36 @@
 # EXPOSE 80
 # EXPOSE 443
 
+# FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+# WORKDIR /src
+# COPY ["CarPartsOnline/CarPartsOnline.csproj", "CarPartsOnline/"]
+# RUN dotnet restore "CarPartsOnline/CarPartsOnline.csproj"
+# COPY . .
+# WORKDIR "/src"
+# RUN dotnet build "CarPartsOnline/CarPartsOnline.csproj" -c Release -o /app/build
+
+# FROM build AS publish
+# RUN dotnet publish "CarPartsOnline/CarPartsOnline.csproj" -c Release -o /app/publish
+
+# FROM base AS final
+# WORKDIR /app
+# COPY --from=build /app .
+# ENTRYPOINT ["dotnet", "CarPartsOnline.dll"
+
+# syntax=docker/dockerfile:1
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
-WORKDIR /src
-COPY ["CarPartsOnline/CarPartsOnline.csproj", "CarPartsOnline/"]
-RUN dotnet restore "CarPartsOnline/CarPartsOnline.csproj"
-COPY . .
-WORKDIR "/src"
-RUN dotnet build "CarPartsOnline/CarPartsOnline.csproj" -c Release -o /app/build
+WORKDIR /CarPartsOnline/app
 
-FROM build AS publish
-RUN dotnet publish "CarPartsOnline/CarPartsOnline.csproj" -c Release -o /app/publish
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
 
-FROM base AS final
-WORKDIR /app
-COPY --from=build /app .
-ENTRYPOINT ["dotnet", "CarPartsOnline.dll"
+# Copy everything else and build
+COPY ../engine/examples ./
+RUN dotnet publish -c Release -o out
 
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
+WORKDIR /CarPartsOnline/app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "CarPartsOnline.dll"]
