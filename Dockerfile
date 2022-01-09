@@ -37,7 +37,7 @@ WORKDIR /src
 COPY ["CarPartsOnline/CarPartsOnline.csproj", "CarPartsOnline/"]
 RUN dotnet restore "CarPartsOnline/CarPartsOnline.csproj"
 COPY . .
-WORKDIR "/src/WebshopAPI"
+WORKDIR "/src/CarPartsOnline"
 RUN dotnet build "CarPartsOnline.csproj" -c Release -o /app/build
 
 FROM build AS publish
