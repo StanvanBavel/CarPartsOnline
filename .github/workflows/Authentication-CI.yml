@@ -40,7 +40,7 @@ jobs:
         with:
           file: ./Authentication/Dockerfile
           push: true
-          tags: stanvb/carpartsonline:latest
+          tags: stanvb/carpartsonline-authentication:latest
           
   Sonarcloud:
     name: Build
