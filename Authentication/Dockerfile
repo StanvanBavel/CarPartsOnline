@@ -1,11 +1,3 @@
-FROM ubuntu
-
-MAINTAINER stanvanbavel pal <461345@student.fontys.nl>
-
-RUN apt-get update
-
-CMD ["echo", "DockerImage Pushed"]
-
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
 EXPOSE 80
