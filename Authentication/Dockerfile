@@ -9,10 +9,10 @@ CMD ["echo", "DockerImage Pushed"]
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 44319
-EXPOSE 49172
+EXPOSE 44344
+EXPOSE 44334
 EXPOSE 5000
-ENV ASPNETCORE_URLS http://*:44319
+ENV ASPNETCORE_URLS http://*:44344
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
