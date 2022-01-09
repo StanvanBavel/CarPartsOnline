@@ -37,7 +37,7 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
     COPY ["CarPartsOnline/CarPartsOnline.csproj", ""]
     RUN dotnet restore "./CarPartsOnline.csproj"
     COPY . .
-    WORKDIR "/src/."
+    WORKDIR "/src"
     RUN dotnet build "CarPartsOnline/CarPartsOnline.csproj" -c Release -o /app/build
 
     FROM build AS publish
