@@ -16,10 +16,10 @@ ENV ASPNETCORE_URLS http://*:44319
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["CarPartsOnline/Authentication.csproj", "Authentication/"]
-RUN dotnet restore "CarPartsOnline/Authentication.csproj"
+COPY ["Authentication/Authentication.csproj", "Authentication/"]
+RUN dotnet restore "Authentication/Authentication.csproj"
 COPY . .
-WORKDIR "/src/CarPartsOnline"
+WORKDIR "/src/Authentication"
 RUN dotnet build "Authentication.csproj" -c Release -o /app/build
 
 FROM build AS publish
