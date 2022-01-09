@@ -6,7 +6,7 @@
 
 # CMD ["echo", "DockerImage Pushed"]
 # mcr.microsoft.com/dotnet/core/sdk:3.0-alpine AS build
-FROM mcr.microsoft.com/dotnet/aspnet:3.0-alpine AS base
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
