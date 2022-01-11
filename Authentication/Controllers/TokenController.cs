@@ -13,14 +13,46 @@ namespace Authentication.Controllers
 {
     public class TokenController : Controller
     {
+
         private const string SECRET_KEY = "this is my custom Secret key for authnetication";
         public static readonly SymmetricSecurityKey SIGNING_KEY = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(TokenController.SECRET_KEY));
 
-        public object CreateToken(string username, int role)
+        //public object CreateToken(string username, int role)
+        //{
+        //    if (username != null)
+        //    {
+        //        return new ObjectResult(GenerateToken(username, role));
+        //    }
+        //    else
+        //    {
+        //        return new BadRequestResult();
+        //    }
+        //}
+
+        //private object GenerateToken(string email, int role)
+        //{
+        //    var token = new JwtSecurityToken(
+        //        claims: new Claim[]
+        //        {
+        //            new Claim("email", email),
+        //            new Claim(ClaimTypes.Role, role.ToString())
+        //        },
+        //        notBefore: DateTime.Now,
+        //        expires: DateTime.Now.AddMinutes(60),
+        //        signingCredentials: new SigningCredentials(SIGNING_KEY, SecurityAlgorithms.HmacSha256)
+        //        );
+
+        //    return new JwtSecurityTokenHandler().WriteToken(token);
+        //}
+
+
+        //vanaf hieer incommenten!!!
+
+        public object CreateToken(int id)
         {
-            if (username != null)
+            if (id != 0)
             {
-                return new ObjectResult(GenerateToken(username, role));
+                return new ObjectResult(GenerateToken(id));
             }
             else
             {
@@ -28,13 +60,13 @@ namespace Authentication.Controllers
             }
         }
 
-        private object GenerateToken(string email, int role)
+        private object GenerateToken(int id)
         {
             var token = new JwtSecurityToken(
                 claims: new Claim[]
                 {
-                    new Claim("email", email),
-                    new Claim(ClaimTypes.Role, role.ToString())
+                    new Claim("userId", Convert.ToString(id)),
+                    //new Claim(ClaimTypes.Role, role.ToString())
                 },
                 notBefore: DateTime.Now,
                 expires: DateTime.Now.AddMinutes(60),
@@ -50,6 +82,7 @@ namespace Authentication.Controllers
             List<Claim> data = new List<Claim>();
 
             var token = tokentemp[1];
+            //var token = test;
             var handler = new JwtSecurityTokenHandler();
             var jwtSecurityToken = handler.ReadJwtToken(token);
 
@@ -71,16 +104,16 @@ namespace Authentication.Controllers
                 var token = split[1];
                 var handler = new JwtSecurityTokenHandler();
                 var jwtSecurityToken = handler.ReadJwtToken(token);
-                    handler.ValidateToken(token, new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SECRET_KEY)),
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                        ValidateLifetime = true,
-                        // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
-                        ClockSkew = TimeSpan.Zero
-                    }, out SecurityToken validatedToken);
+                handler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SECRET_KEY)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken validatedToken);
 
                 return false;
             }
@@ -90,10 +123,100 @@ namespace Authentication.Controllers
             }
         }
 
-        public string nonExistentToken(string email, int role)
+        //public string nonExistentToken(string email, int role)
+        //{
+        //    var x = GenerateToken(email, role);
+        //    return x.ToString();
+        //}
+        public string nonExistentToken(int id)
         {
-            var x = GenerateToken(email, role);
+            var x = GenerateToken(id);
             return x.ToString();
         }
     }
 }
+//        private const string SECRET_KEY = "this is my custom Secret key for authnetication";
+//        public static readonly SymmetricSecurityKey SIGNING_KEY = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(TokenController.SECRET_KEY));
+
+//        public object CreateToken(int id, int role)
+//        {
+//            if (id != 0)
+//            {
+//                return new ObjectResult(GenerateToken(id, role));
+//            }
+//            else
+//            {
+//                return new BadRequestResult();
+//            }
+//        }
+
+//        private object GenerateToken(int id, int role)
+//        {
+//            var token = new JwtSecurityToken(
+//                claims: new Claim[]
+//                {
+//                    new Claim("userId", Convert.ToString(id)),
+//                    new Claim(ClaimTypes.Role, role.ToString())
+//                },
+//                notBefore: DateTime.Now,
+//                expires: DateTime.Now.AddMinutes(60),
+//                signingCredentials: new SigningCredentials(SIGNING_KEY, SecurityAlgorithms.HmacSha256)
+//                );
+
+//            return new JwtSecurityTokenHandler().WriteToken(token);
+//        }
+
+//        public List<Claim> readOut(string test)
+//        {
+//            string[] tokentemp = test.Split(" ");
+//            List<Claim> data = new List<Claim>();
+
+//            var token = tokentemp[1];
+//            var handler = new JwtSecurityTokenHandler();
+//            var jwtSecurityToken = handler.ReadJwtToken(token);
+
+//            foreach (Claim c in jwtSecurityToken.Claims)
+//            {
+//                data.Add(c);
+//            }
+//            return data;
+//        }
+
+//        [Authorize]
+//        public bool isExpired(string test)
+//        {
+
+//            try
+//            {
+//                string[] split = test.Split(" ");
+
+//                var token = split[1];
+//                var handler = new JwtSecurityTokenHandler();
+//                var jwtSecurityToken = handler.ReadJwtToken(token);
+//                handler.ValidateToken(token, new TokenValidationParameters
+//                {
+//                    ValidateIssuerSigningKey = true,
+//                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SECRET_KEY)),
+//                    ValidateIssuer = false,
+//                    ValidateAudience = false,
+//                    ValidateLifetime = true,
+//                    // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
+//                    ClockSkew = TimeSpan.Zero
+//                }, out SecurityToken validatedToken);
+
+//                return false;
+//            }
+//            catch
+//            {
+//                return true;
+//            }
+//        }
+
+//        public string nonExistentToken(int id, int role)
+//        {
+//            var x = GenerateToken(id, role);
+//            return x.ToString();
+//        }
+//    }
+//}
+

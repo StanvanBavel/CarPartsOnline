@@ -10,28 +10,28 @@ namespace Authentication.Services
 {
     public class AccountService : IAccount
     {
-        private readonly DataContext dc;
+        private readonly DataContext db;
 
-        public AccountService(DataContext dc)
+        public AccountService(DataContext db)
         {
-            this.dc = dc;
+            this.db = db;
         }
 
         public User getUserById(string userId)
         {
-            return dc.Users.Where(x => x.userId == Convert.ToInt32(userId)).FirstOrDefault();
+            return db.Users.Where(x => x.userId == Convert.ToInt32(userId)).FirstOrDefault();
         }
 
         public User login(User u)
         {
-            return dc.Users.Where(x => x.email.Equals(u.email) && x.password.Equals(u.password)).FirstOrDefault();
+            return db.Users.Where(x => x.email.Equals(u.email) && x.password.Equals(u.password)).FirstOrDefault();
         }
 
         public User checkRegistered(User u)
         {
             try
             {
-                return dc.Users.Where(x => x.email.Equals(u.email)).FirstOrDefault();
+                return db.Users.Where(x => x.email.Equals(u.email)).FirstOrDefault();
             }
             catch
             {
@@ -42,15 +42,15 @@ namespace Authentication.Services
         {
             try
             {
-                dc.Users.Add(u);
-                dc.SaveChanges();
+                db.Users.Add(u);
+                db.SaveChanges();
                 return true;
             }
             catch
             {
                 return false;
             }
-            
+
         }
     }
 }

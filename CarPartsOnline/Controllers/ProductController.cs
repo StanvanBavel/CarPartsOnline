@@ -47,7 +47,7 @@ namespace CarPartsOnline.Controllers
             db.SaveChanges();
             return Ok();
         }
-        [Authorize]
+        //[Authorize]
         [HttpDelete]
         [Route("/[controller]/Delete")]
         public string DeleteProductByID(int productid)
@@ -57,6 +57,7 @@ namespace CarPartsOnline.Controllers
             db.SaveChanges();
             return "Product has succesfully been Deleted";
         }
+
         [Authorize]
         [HttpPut]
         [Route("/[controller]/Update")]
