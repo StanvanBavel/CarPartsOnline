@@ -117,29 +117,29 @@ namespace CarPartsOnlineTest
             Assert.IsType<string>(result);
         }
 
-        //[Fact]
-        //private void UpdateAccount_shouldupdatedata()
-        //{
+        [Fact]
+        private void UpdateAccount_shouldupdatedata()
+        {
 
-        //    var controller = Initialize();
-        //    var usermodel = new User();
-        //    usermodel.firstName = "piet";
-        //    usermodel.email = "piet@mail.nl";
-        //    usermodel.password = "SpaRood23";
-        //    var test = controller.loginNoToken(1);
-        //    var result = controller.updateAccount(test, usermodel);
-        //    Assert.IsType<User>(result);
-        //}
+            var controller = Initialize();
+            var usermodel = new User();
+            usermodel.firstName = "joop";
+            usermodel.email = "jopie@mail.nl";
+            usermodel.password = "Joop";
+            var test = controller.loginNoToken(1);
+            var result = controller.updateAccount(test, usermodel);
+            Assert.IsType<string>(result);
+        }
 
-        //[Fact]
-        //private void DeleteUserbyId_shoulddeleteuser()
-        //{
+        [Fact]
+        private void DeleteUserbyId_shoulddeleteuser()
+        {
 
-        //    var controller = Initialize();
-        //    var usermodel = new User();
-        //    var test = controller.loginNoToken(1);
-        //    var result = controller.DeleteUserbyID(test);
-        //    Assert.IsType<User>(result);
-        //}
+            var controller = Initialize();
+            var usermodel = new User();
+            var test = controller.loginNoToken(1);
+            var result = controller.DeleteUserbyID(test);
+            Assert.IsType<string>(result);
+        }
     }
 }

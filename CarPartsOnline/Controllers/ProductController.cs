@@ -58,7 +58,7 @@ namespace CarPartsOnline.Controllers
             return "Product has succesfully been Deleted";
         }
 
-        [Authorize]
+        
         [HttpPut]
         [Route("/[controller]/Update")]
         public string EditProduct(Product mode)
@@ -69,7 +69,7 @@ namespace CarPartsOnline.Controllers
             product.productDescription = mode.productDescription;
             product.productPrice = mode.productPrice;
             product.productImage = mode.productImage;
-            db.Entry(product).State = (Microsoft.EntityFrameworkCore.EntityState)System.Data.Entity.EntityState.Modified;
+            db.Entry(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             db.SaveChanges();
             return "Product has been Updated";
         }

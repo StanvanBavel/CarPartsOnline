@@ -165,49 +165,49 @@ namespace Authentication.Controllers
         
 
 
-        [Authorize]
-        [HttpPut]
-        [Route("/[controller]/Update")]
-        public string EditUser(User mode)
-        {
-            User user = db.Users.Where(x => x.userId == mode.userId).Single<User>();
-            user.userId = mode.userId;
-            user.firstName = mode.firstName;
-            user.lastName = mode.lastName;
-            user.adress = mode.adress;
-            user.housenumber = mode.housenumber;
-            user.city = mode.city;
-            user.email = mode.email;
-            user.password = mode.password;
-
-            db.Entry(user).State = EntityState.Modified;
-            db.SaveChanges();
-            return "User has been Updated";
-        }
-
         //[Authorize]
-        //[HttpDelete]
-        //[Route("/[controller]/delete")]
-        //public string DeleteUserbyID([FromHeader] string Authorization)
+        //[HttpPut]
+        //[Route("/[controller]/Update")]
+        //public string EditUser(User mode)
         //{
-        //    string userId = "";
-        //    string[] tokentemp = Authorization.Split(" ");
-        //    List<Claim> data = new List<Claim>();
-        //    var token = tokentemp[1];
-        //    var handler = new JwtSecurityTokenHandler();
-        //    var jwtSecurityToken = handler.ReadJwtToken(token);
-        //    foreach (Claim c in jwtSecurityToken.Claims)
-        //    {
-        //        if (c.Type == "userId")
-        //        {
-        //            userId = c.Value;
-        //        }
-        //    }
-        //    User user = db.Users.Where(x => x.userId == Convert.ToInt32(userId)).Single<User>();
-        //    db.Users.Remove(user);
+        //    User user = db.Users.Where(x => x.userId == mode.userId).Single<User>();
+        //    user.userId = mode.userId;
+        //    user.firstName = mode.firstName;
+        //    user.lastName = mode.lastName;
+        //    user.adress = mode.adress;
+        //    user.housenumber = mode.housenumber;
+        //    user.city = mode.city;
+        //    user.email = mode.email;
+        //    user.password = mode.password;
+
+        //    db.Entry(user).State = EntityState.Modified;
         //    db.SaveChanges();
-        //    return "User has successfully been Deleted";
+        //    return "User has been Updated";
         //}
+
+        [Authorize]
+        [HttpDelete]
+        [Route("/[controller]/delete")]
+        public string DeleteUserbyID([FromHeader] string Authorization)
+        {
+            string userId = "";
+            string[] tokentemp = Authorization.Split(" ");
+            List<Claim> data = new List<Claim>();
+            var token = tokentemp[1];
+            var handler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = handler.ReadJwtToken(token);
+            foreach (Claim c in jwtSecurityToken.Claims)
+            {
+                if (c.Type == "userId")
+                {
+                    userId = c.Value;
+                }
+            }
+            User user = db.Users.Where(x => x.userId == Convert.ToInt32(userId)).Single<User>();
+            db.Users.Remove(user);
+            db.SaveChanges();
+            return "User has successfully been Deleted";
+        }
 
         [Authorize]
         [HttpPut]
